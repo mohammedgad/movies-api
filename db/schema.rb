@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_145310) do
+ActiveRecord::Schema.define(version: 2018_11_11_111927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_145310) do
     t.text "movie_overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "movie_title"
   end
 
 end

@@ -1,4 +1,5 @@
 class FavosController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :set_favo, only: [:show, :update, :destroy]
 
   # GET /favos
@@ -46,6 +47,6 @@ class FavosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def favo_params
-      params.require(:favo).permit(:movie_id, :movie_poster, :movie_overview)
+      params.require(:favo).permit(:movie_title, :movie_id, :movie_poster, :movie_overview)
     end
 end
