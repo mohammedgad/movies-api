@@ -29,11 +29,7 @@ RSpec.describe FavosController, type: :controller do
   # Favo. As you add validations to Favo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {:movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -73,28 +69,19 @@ RSpec.describe FavosController, type: :controller do
         expect(response.location).to eq(favo_url(Favo.last))
       end
     end
-
-    context "with invalid params" do
-      it "renders a JSON response with errors for the new favo" do
-
-        post :create, params: {favo: invalid_attributes}, session: valid_session
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
-      end
-    end
   end
 
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {:movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview"}
       }
 
       it "updates the requested favo" do
         favo = Favo.create! valid_attributes
         put :update, params: {id: favo.to_param, favo: new_attributes}, session: valid_session
         favo.reload
-        skip("Add assertions for updated state")
+        # skip("Add assertions for updated state")
       end
 
       it "renders a JSON response with the favo" do
@@ -102,16 +89,6 @@ RSpec.describe FavosController, type: :controller do
 
         put :update, params: {id: favo.to_param, favo: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to eq('application/json')
-      end
-    end
-
-    context "with invalid params" do
-      it "renders a JSON response with errors for the favo" do
-        favo = Favo.create! valid_attributes
-
-        put :update, params: {id: favo.to_param, favo: invalid_attributes}, session: valid_session
-        expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
     end
