@@ -29,7 +29,8 @@ RSpec.describe FavosController, type: :controller do
   # Favo. As you add validations to Favo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {:movie_title => "pulp fiction", :movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview"}
+    user = create(:user)
+    {:user_id => user.id, :movie_title => "pulp fiction", :movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -74,7 +75,7 @@ RSpec.describe FavosController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {:movie_title => "pulp fiction", :movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview"}
+        {:movie_title => "pulp fiction", :movie_id => 1, :movie_poster => "http://example.com/img.jpg", :movie_overview => "movie overview movie overview movie overview", :user_id => 1}
       }
 
       it "updates the requested favo" do

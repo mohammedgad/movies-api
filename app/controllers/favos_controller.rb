@@ -47,6 +47,6 @@ class FavosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def favo_params
-      params.require(:favo).permit(:movie_title, :movie_id, :movie_poster, :movie_overview)
+      params.require(:favo).permit(:movie_title, :movie_id, :movie_poster, :movie_overview, :user_id)
     end
 end
