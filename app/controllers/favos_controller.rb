@@ -1,5 +1,6 @@
 class FavosController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+  before_action :authenticate_user
   before_action :set_favo, only: [:show, :update, :destroy]
 
   # GET /favos
