@@ -5,7 +5,7 @@ class FavosController < ApplicationController
 
   # GET /favos
   def index
-    @favos = Favo.all
+    @favos = current_user.favos.all
 
     render json: @favos
   end
@@ -17,7 +17,7 @@ class FavosController < ApplicationController
 
   # POST /favos
   def create
-    @favo = Favo.new(favo_params)
+    @favo = current_user.favos.new(favo_params)
 
     if @favo.save
       render json: @favo, status: :created, location: @favo
@@ -43,7 +43,7 @@ class FavosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_favo
-      @favo = Favo.find(params[:id])
+      @favo = current_user.favos.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
